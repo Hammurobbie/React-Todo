@@ -8,19 +8,21 @@ class Todo extends React.Component {
     };
     console.log("super", props);
   }
-  toggle = () =>
-    !this.state.completed
-      ? this.setState({ completed: true })
-      : this.setState({ completed: false });
+  toggleComplete = index => {
+    return this.setState({ completed: !this.state.completed });
+  };
 
   render() {
     console.log("exact todo", this.props.completed);
     return (
-      <div
-        onClick={this.toggle}
-        className={this.props.completed ? "completed" : ""}
-      >
-        <p>{this.props.task}</p>
+      <div>
+        <p
+          onClick={this.toggleComplete}
+          // onClick={this.toggle(this.props.index)}
+          className={this.props.completed ? "complete" : "suckMyDick"}
+        >
+          {this.props.task}
+        </p>
       </div>
     );
   }

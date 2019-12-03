@@ -2,6 +2,8 @@ import React from "react";
 import TodoForm from "./components/TodoComponents/TodoForm";
 import TodoList from "./components/TodoComponents/TodoList";
 
+import "./components/TodoComponents/Todo.css";
+
 const todo = [
   {
     task: "Organize Garage",
@@ -58,6 +60,7 @@ class App extends React.Component {
           newTodo={this.state.newTodo}
           handleChanges={this.handleChanges}
           handleSubmit={this.handleSubmit}
+          todo={this.state.todo}
         />
         <TodoList todo={this.state.todo} />
       </div>
