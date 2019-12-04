@@ -26,7 +26,8 @@ class App extends React.Component {
     super();
     this.state = {
       todo: todo,
-      newTodo: ""
+      newTodo: "",
+      completed: false
     };
   }
 
@@ -52,6 +53,36 @@ class App extends React.Component {
     this.setState({ newTodo: "" });
   };
 
+  toggleComplete = todoId => {
+    // return this.setState({ completed: !this.state.completed });
+    this.setState({
+      todo: this.state.todo.map(todo => {
+        if (todo.id === todoId) {
+          return {
+            ...todo,
+            completed: !todo.completed
+          };
+        } else {
+          return todo;
+        }
+      })
+    });
+  };
+
+  checkifComplete = todo => {
+    console.log(todo.completed);
+    if (todo.completed === false) {
+      return todo;
+    }
+  };
+
+  clearCompleted = () => {
+    const completedFilter = this.state.todo.filter(
+      task => task.completed === false
+    );
+    this.setState({ todo: completedFilter });
+  };
+
   render() {
     return (
       <div>
@@ -61,8 +92,10 @@ class App extends React.Component {
           handleChanges={this.handleChanges}
           handleSubmit={this.handleSubmit}
           todo={this.state.todo}
+          clear={this.clearCompleted}
         />
-        <TodoList todo={this.state.todo} />
+        <button onClick={this.clearCompleted}>Clear Completed Todos</button>
+        <TodoList todo={this.state.todo} toggleComplete={this.toggleComplete} />
       </div>
     );
   }

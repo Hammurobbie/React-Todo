@@ -1,29 +1,22 @@
 import React from "react";
+import styled from "styled-components";
+
+const TodoDiv = styled.div`
+  background-color: white;
+  width: 100%;
+`;
 
 class Todo extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      completed: false
-    };
-    console.log("super", props);
-  }
-  toggleComplete = index => {
-    return this.setState({ completed: !this.state.completed });
-  };
-
   render() {
-    console.log("exact todo", this.props.completed);
     return (
-      <div>
-        <p
-          onClick={this.toggleComplete}
-          // onClick={this.toggle(this.props.index)}
-          className={this.props.completed ? "complete" : "suckMyDick"}
-        >
-          {this.props.task}
-        </p>
-      </div>
+      <TodoDiv
+        // in order to use argument parameters in functions, a callback must be used
+        onClick={() => this.props.toggleComplete(this.props.id)}
+        // onClick={this.toggle(this.props.index)}
+        className={this.props.completed ? "complete" : "incomplete"}
+      >
+        <p>{this.props.task}</p>
+      </TodoDiv>
     );
   }
 }
