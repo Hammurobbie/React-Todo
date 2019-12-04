@@ -1,0 +1,49 @@
+.complete {
+  text-decoration: line-through;
+  color: steelblue;
+}
+
+.incomplete {
+  color: steelblue;
+}
+
+html {
+  background-color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: steelblue;
+  font-size: 1.25rem;
+  padding: 0 10% 0 10%;
+  margin-top: 15vh;
+}
+
+button {
+  width: 100%;
+  padding: 3% 0 3% 0;
+  margin: 3% 0 3% 0;
+  border-radius: 30px;
+  background-color: rgb(255, 194, 102);
+  color: whitesmoke;
+  font-size: 0.85rem;
+}
+
+button:focus {
+  outline: none;
+}
+
+::placeholder {
+  text-align: center;
+}
+input {
+  text-align: center;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 25px;
+  color: gray;
+}
+
+input:focus {
+  outline: none;
+}
